@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutputPath>$(SolutionDir)out\$(Configuration)\</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <!-- Ensure OutDir is defined -->
+  </PropertyGroup>
+
+  <Target Name="CreateOutputDirectory" BeforeTargets="Build">
+    <MakeDir Directories="$(OutDir)" Condition="!Exists('$(OutDir)')" />
+    <Message Importance="high" Text="Output directory created at: $(OutDir)" Condition="Exists('$(OutDir)')" />
+  </Target>
+</Project>
